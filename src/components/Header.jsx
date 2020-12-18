@@ -2,6 +2,8 @@ import React from 'react';
 import carritoimg from '../assets/img/carrito.svg';
 
 const Header = ({carrito}) => {
+    /**Realizar un total del precio de los productos agregados al carrito
+     * por medio de la funcion reduce */
     let total = carrito.reduce((precioTotal,producto)=>{
         return precioTotal + producto.precio;
     },0);

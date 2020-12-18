@@ -3,7 +3,7 @@ import Producto from './Producto';
 
 const Carrito = ({carrito,agregarCarrito}) => (
     <div className="card border-dark">
-        <h3 className="card-header text-center text-white bg-dark">Tu carrito de compras</h3>
+        <h5 className="card-header text-center text-white bg-dark">Tu carrito de compras</h5>
         {carrito.length === 0
         ?<div className="m-2 alert alert-info" role="alert">
         ¡No hay productos agregados!
