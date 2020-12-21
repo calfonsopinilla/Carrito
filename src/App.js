@@ -22,6 +22,7 @@ function App() {
   /**Hook useState para tener productos
    * productos tiene como state acual un arreglo de objetos*/
   const [productos, setProductos] = useState(listadoProductos);
+  
   useEffect(() => {
     if(listadoProductos){
       localStorage.setItem('productos',JSON.stringify(productos));
@@ -47,9 +48,10 @@ function App() {
             <table className="table table-dark table-striped mt-1 text-center">
               <thead>
                   <tr>
+                      <th scope="col">Disponibles</th>
                       <th scope="col">Nombre</th>
                       <th scope="col">Precio</th>
-                      <th scope="col">Añadir</th>
+                      <th scope="col">Opciones</th>
                   </tr>
               </thead>
               <tbody>
@@ -60,6 +62,7 @@ function App() {
                     productos={productos}
                     carrito={carrito}
                     agregarCarrito={agregarCarrito}
+                    setProductos={setProductos}
                   />
                 ))}
               </tbody>

@@ -11,6 +11,7 @@ const Carrito = ({carrito,agregarCarrito}) =>(
         :<table className="table m-0 border-dark table-striped text-center">
             <thead>
                 <tr>
+                    <th scope="col">Pedidos</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Precio</th>
                     <th scope="col">Eliminar</th>

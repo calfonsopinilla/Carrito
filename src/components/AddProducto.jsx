@@ -5,7 +5,8 @@ const AddProducto = ({crearProducto}) =>{
 
     const [producto, setProducto] = useState({
         nombre:'',
-        precio:''
+        precio:'',
+        cantidad:''
     });
 
     const [error, setError] = useState(false);
@@ -14,11 +15,11 @@ const AddProducto = ({crearProducto}) =>{
         setProducto({...producto,[e.target.name]: e.target.value})
     };
 
-    const {nombre,precio} = producto;
+    const {nombre,precio,cantidad} = producto;
 
     const submitProducto = e =>{
         e.preventDefault();
-        if(nombre.trim() === '' || precio.trim() === ''){
+        if(nombre.trim() === '' || precio.trim() === '' || cantidad.trim() === ''){
             setError(true);
             return;
         }
@@ -27,7 +28,8 @@ const AddProducto = ({crearProducto}) =>{
         crearProducto(producto);
         setProducto({
             nombre:'',
-            precio:''
+            precio:'',
+            cantidad:''
         });
     }
 
@@ -36,7 +38,7 @@ const AddProducto = ({crearProducto}) =>{
             <h5 className="card-header text-center text-white bg-dark">Agrega productos a la tienda</h5>
             <div className="card-body">
                 <form className="row text-center" onSubmit={submitProducto}>
-                    <div className="col-lg-6">
+                    <div className="col-lg-4">
                         <label className="visually-hidden">Nombre</label>
                         <input 
                             type="text"
@@ -47,7 +49,7 @@ const AddProducto = ({crearProducto}) =>{
                             value={nombre}
                         />
                     </div>
-                    <div className="col-lg-4">
+                    <div className="col-lg-3">
                         <label className="visually-hidden">Precio</label>
                         <input 
                             type="number"
@@ -58,13 +60,24 @@ const AddProducto = ({crearProducto}) =>{
                             value={precio}
                         />
                     </div>
-                    <div className="d-grid gap-2 col-lg-2 mx-auto">
-                        <button type="submit" className="btn btn-block btn-primary">Agregar</button>
+                    <div className="col-lg-3">
+                        <label className="visually-hidden">Cantidad</label>
+                        <input 
+                            type="number"
+                            className="form-control"
+                            placeholder="Cantidad"
+                            onChange={handleState}
+                            name="cantidad"
+                            value={cantidad}
+                        />
+                    </div>
+                    <div className="d-grid col-lg-2 mx-auto">
+                        <button type="submit" className="btn btn-primary">Agregar</button>
                     </div>
                 </form>
                 {error?
                 <div className="mt-1 mb-0 alert alert-danger" role="alert">
-                Todos los campos son requeridos
+                    Todos los campos son requeridos
                 </div>
                 :null
                 }
