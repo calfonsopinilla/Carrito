@@ -26,32 +26,23 @@ const Producto = ({producto,productos,carrito,agregarCarrito}) => {
         agregarCarrito(productos);
     }
     return (
-        <div className="card m-3">
-            <div className="card-header d-flex justify-content-between">
-                <div class="card-title mb-0">
-                    <p><b>Producto:</b> {nombre}</p>
-                </div>
-                <div>
-                    {productos
-                    ?(<button
-                        className="btn btn-success btn-sm"
-                        type="button"
-                        onClick={()=>realizarCompra(id)}
-                    ><img src={carritoaddimg} width="20px" alt=""/>
-                    </button>)
-                    :(<button 
-                        className="btn btn-danger btn-sm"
-                        type="button"
-                        onClick={()=>eliminarProducto(id)}
-                    ><img src={borrarimg} width="20px" alt=""/>
-                    </button>)
-                    }
-                </div>
-            </div>
-            <div className="card-body">
-                <p className="card-text"><b>Precio: </b><small className="text-muted">$ {precio} COP</small></p>
-            </div>
-        </div>
+        <tr>
+            <td>{nombre}</td>
+            <td>$ {precio} COP</td>
+            <td>{productos
+                ?(<button
+                    className="btn btn-success btn-sm"
+                    type="button"
+                    onClick={()=>realizarCompra(id)}
+                ><img src={carritoaddimg} width="20px" alt=""/></button>)
+                :(<button 
+                    className="btn btn-danger btn-sm"
+                    type="button"
+                    onClick={()=>eliminarProducto(id)}
+                ><img src={borrarimg} width="20px" alt=""/></button>)
+                }
+            </td>
+        </tr>
     );
 }
  
