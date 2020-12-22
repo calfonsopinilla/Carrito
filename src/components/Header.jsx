@@ -6,9 +6,8 @@ const Header = ({carrito}) => {
      * por medio de la funcion reduce */
     let total = 0;
     carrito.forEach(producto=>{
-        total = total + Number.parseInt(producto.precio);   
+        total = total + (Number.parseInt(producto.precio)*producto.cantidad);   
     });
-    console.log(carrito);
     return ( 
         <nav className="navbar navbar-dark bg-dark">
             <div className="container-fluid">

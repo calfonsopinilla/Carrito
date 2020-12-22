@@ -6,16 +6,23 @@ const Producto = ({producto,productos,carrito,agregarCarrito,setProductos}) => {
     const {id,nombre,precio,cantidad} = producto;
     //Funcion para realizar la commpra del producto
     const realizarCompra = id => {
-        const productoNuevo = productos.filter(producto => producto.id === id)[0];
+        let productoNuevo = productos.filter(producto => producto.id === id)[0];
         if(productoNuevo.cantidad===0){
             console.log('no hay productos disponibles');
         }else{
             productoNuevo.cantidad = productoNuevo.cantidad - 1;
             const listaProductos = productos.filter(producto => producto.id !== id);
             setProductos([...listaProductos,productoNuevo]);
-            const productoCarrito = {...productoNuevo};
-            productoCarrito.cantidad = 1;
-            agregarCarrito([...carrito,productoCarrito]);
+            let productoCarrito = carrito.filter(producto => producto.id === id)[0];
+            if(productoCarrito){
+                const listaCarrito = carrito.filter(producto => producto.id !== id);
+                productoCarrito.cantidad = productoCarrito.cantidad + 1;
+                agregarCarrito([...listaCarrito,productoCarrito]);
+            }else{
+                productoCarrito = {...productoNuevo};
+                productoCarrito.cantidad = 1;
+                agregarCarrito([...carrito,productoCarrito]);
+            }
         }
     }
     //Funcion para eliminar productos de la tienda
