@@ -11,16 +11,10 @@ function App() {
   if(!listadoProductos){
     listadoProductos = [];
   }
-  /**Obtener la fecha, unicamente el año Ej: 2020 */
   const fecha = new Date().getFullYear();
-  /**Hook useState para tener el carrito
-   * carrito la variable que tendra el state actual
-   * en este caso esta vacio useSate([])
-   * agregarCarrito cambia el state carrito, ya que no se
-   * puede modificar directamente */
+
   const [carrito, agregarCarrito] = useState([]);
-  /**Hook useState para tener productos
-   * productos tiene como state acual un arreglo de objetos*/
+
   const [productos, setProductos] = useState(listadoProductos);
   
   useEffect(() => {
@@ -31,9 +25,8 @@ function App() {
     }
   },[productos,listadoProductos]);
   
-  const crearProducto = producto =>{
-    setProductos([...productos,producto]);
-  };
+  const crearProducto = producto =>{setProductos([...productos,producto]);};
+  
   return (
     <Fragment>
       <Header
